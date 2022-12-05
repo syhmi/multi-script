@@ -21,7 +21,7 @@ systemctl restart nginx
 # ln -s /opt/certbot/bin/certbot /usr/bin/certbot
 apt install software-properties-common -y
 apt install certbot -y
-certbot certonly --nginx --standalone --preferred-challenges http --agree-tos --email $email -d $domain
+certbot certonly --nginx --preferred-challenges http --agree-tos --email $email -d $domain
 certbot renew --dry-run
 
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
