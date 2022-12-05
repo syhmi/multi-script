@@ -14,14 +14,14 @@ sed -i "s/server_name _;/server_name $domain;/" /etc/nginx/sites-available/defau
 fi
 
 systemctl restart nginx
-# apt install python3 python3-venv libaugeas0 -y
-# python3 -m venv /opt/certbot/
-# /opt/certbot/bin/pip install --upgrade pip
-# /opt/certbot/bin/pip install certbot certbot-nginx
-# ln -s /opt/certbot/bin/certbot /usr/bin/certbot
-apt install software-properties-common -y
-apt install certbot -y
-certbot certonly --nginx --preferred-challenges http --agree-tos --email $email -d $domain
+
+apt install python3 python3-venv libaugeas0 -y
+python3 -m venv /opt/certbot/
+/opt/certbot/bin/pip install --upgrade pip
+/opt/certbot/bin/pip install certbot certbot-nginx
+ln -s /opt/certbot/bin/certbot /usr/bin/certbot
+
+certbot certonly --nginx -q --preferred-challenges http --agree-tos --email $email -d $domain
 certbot renew --dry-run
 
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u root
