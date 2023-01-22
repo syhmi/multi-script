@@ -109,7 +109,7 @@ wget https://raw.githubusercontent.com/CTechDidik/BBR-CTech/main/BBR-CTechDidik.
 systemctl restart xray
 
 echo "VLESS WS"
-echo "vless://$uuid@$domain:443?path=%2Fvless-tls&security=tls&encryption=none&type=ws&sni=sg.hasyi.me#hasyiVPN"
+echo "vless://$uuid@$domain:443?path=%2Fvless-tls&security=tls&encryption=none&type=ws&sni=$domain#hasyiVPN"
 echo "-----------------------------------------------------------------------------------------------------"
 echo "VLESS TCP"
-echo "vless://$uuid@$domain:443?security=tls&encryption=none&type=tcp&sni=sg.hasyi.me#hasyiVPN"
+echo "vless://$uuid@$domain:443?security=tls&encryption=none&type=tcp&sni=$domain#hasyiVPN"
