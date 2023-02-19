@@ -30,6 +30,9 @@ do
     echo "Please wait..."
     sleep 10
     
+    echo -e "You can unplug your device.\n\n"
+    read -p "Press enter to continue"
+    
     clear
     
     echo "Downloading AltServer Linux and netmuxd..."
@@ -140,7 +143,7 @@ WantedBy=default.target
     # sudo systemctl restart restart-altserver
     # sleep 5
     # echo "AltServer started!"
-    echo "You need to reboot to use AltServer\n"
+    echo -e "You need to reboot to use AltServer\n"
     read -p "Press enter to reboot"
     sudo reboot
   elif [ $optsel -eq 2 ]; then
