@@ -24,7 +24,7 @@ do
     sleep 5
 
     clear
-    echo "Plug in your iPhone and select \"Trust this device\" if prompted.\n"
+    echo -e "Plug in your iPhone and select \"Trust this device\" if prompted.\n"
     read -p "Press enter to continue"
 
     echo "Please wait..."
