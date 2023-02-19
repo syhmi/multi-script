@@ -16,7 +16,7 @@ do
 
   if [ $optsel -eq 1 ]; then
     echo "Installing dependencies..."
-    sudo apt install libavahi-compat-libdnssd-dev usbmuxd
+    sudo apt install libavahi-compat-libdnssd-dev usbmuxd -y
     echo "Done!"
 
     echo "Restarting usbmuxd..."
