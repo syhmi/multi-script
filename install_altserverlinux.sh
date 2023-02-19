@@ -29,8 +29,7 @@ do
 
     echo "Please wait..."
     sleep 10
-    read -p "Press enter to continue"
-
+    
     clear
     
     echo "Downloading AltServer Linux and netmuxd..."
