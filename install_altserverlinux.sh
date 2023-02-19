@@ -6,9 +6,10 @@ do
   echo -e "Welcome to AltServer Linux Installer!\n"
   echo -e "Created by: syhmi\n"
   echo -e "1. Full Installation (First Time Use)"
-  echo -e "2. Update AltServer and netmuxd"
-  echo -e "3. Remove AltServer and netmuxd"
-  echo -e "4. Exit Script\n"
+  echo -e "2. Restart AltServer and netmuxd"
+  echo -e "3. Update AltServer and netmuxd"
+  echo -e "4. Remove AltServer and netmuxd"
+  echo -e "5. Exit Script\n"
 
   read -p "Choose your option: " optsel
 
@@ -64,7 +65,7 @@ do
     chmod +x altserver/restart-altserver.sh
     echo -e "#!/bin/bash\n\nexport USBMUXD_SOCKET_ADDRESS=127.0.0.1:27015\naltserver" >> altserver/run-altserver.sh
     echo -e "#!/bin/bash\n\nnetmuxd --disable-unix --host 127.0.0.1" >> altserver/run-netmuxd.sh
-    echo -e "#!/bin/bash\n\nsudo systemctl restart usbmuxd\nsleep 5\nsudo systemctl restart netmuxd\nsleep 5\nsudo systemctl restart altserver" >> altserver/restart-altserver.sh
+    echo -e "#!/bin/bash\n\nsudo systemctl restart usbmuxd\nsleep 10\nsudo systemctl restart netmuxd\nsleep 10\nsudo systemctl restart altserver" >> altserver/restart-altserver.sh
     echo "Done setting up files!"
 
 
@@ -147,6 +148,15 @@ WantedBy=default.target
     read -p "Press enter to reboot"
     sudo reboot
   elif [ $optsel -eq 2 ]; then
+    echo "Restarting..."
+
+    echo "Restarting AltServer and netmuxd..."
+    sudo systemctl restart restart-altserver.service
+    sleep 10
+    echo "Restarted!"
+    
+    read -p "Press enter to continue"
+  elif [ $optsel -eq 3 ]; then
     echo "Updating..."
 
     echo "Downloading AltServer Linux and netmuxd..."
@@ -166,7 +176,7 @@ WantedBy=default.target
     echo "Moved AltServer and netmuxd!"
     echo "Done!"
     read -p "Press enter to continue"
-  elif [ $optsel -eq 3 ]; then
+  elif [ $optsel -eq 4 ]; then
     echo "Stopping daemon..."
     sudo systemctl stop netmuxd.service
     sudo systemctl stop altserver.service
@@ -198,7 +208,7 @@ WantedBy=default.target
 
     echo "Done!"
     read -p "Press enter to continue"
-  elif [ $optsel -eq 4 ]; then
+  elif [ $optsel -eq 5 ]; then
     echo "Bye!"
     exit 0
   else
