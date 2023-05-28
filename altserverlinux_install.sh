@@ -18,7 +18,7 @@ do
     cd ~/altserver
 
     sudo apt update
-    sudo apt upgrade
+    sudo apt upgrade -y
 
     echo "Installing dependencies..."
     sudo apt install -y libavahi-compat-libdnssd-dev usbmuxd ninja-build ldc libplist-dev libimobiledevice-dev libgtk-3-0 dub openssl curl wget
@@ -53,9 +53,9 @@ do
     echo "Done!"
 
     echo "Setting up usbmuxd..."
-    echo >> /lib/systemd/system/usbmuxd.service
-    echo "[Install]" >> /lib/systemd/system/usbmuxd.service
-    echo "WantedBy=multi-user.target" >> /lib/systemd/system/usbmuxd.service
+    echo | sudo tee -a /lib/systemd/system/usbmuxd.service
+    echo "[Install]" | sudo tee -a /lib/systemd/system/usbmuxd.service
+    echo "WantedBy=multi-user.target" | sudo tee -a /lib/systemd/system/usbmuxd.service
     echo "Enabling services..."
     sudo systemctl enable --now avahi-daemon.service
     sudo systemctl enable --now usbmuxd
